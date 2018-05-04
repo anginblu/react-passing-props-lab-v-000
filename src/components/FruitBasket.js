@@ -6,7 +6,7 @@ import FilteredFruitList from './FilteredFruitList.js';
 const FruitBasket = ({fruit, filters, currentFilter, onhandleFilterChange}) => {
     return (
       <div className="fruit-basket">
-        <Filter handleFilterChange={onhandleFilterChange} />
+        <Filter filters = {filters} handleFilterChange={onhandleFilterChange} />
         <FilteredFruitList
           filter={currentFilter} />
       </div>
