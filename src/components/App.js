@@ -8,9 +8,8 @@ export default class App extends Component{
 
     this.state = {
       filters: [],
-      items: [],
-      filters: [],
-      selectedFilter: null
+      fruit: [],
+      currentFilter: null
     };
   }
 
@@ -20,12 +19,25 @@ export default class App extends Component{
       .then(filters => this.setState({ filters }));
   }
 
-  
-  render(){
+  fetchFruits = () => {
+    fetch('/api/fruit')
+      .then(response => response.json())
+      .then(fruit => this.setState({ fruit }));
+  }
+
+
+  handleFilterChange = (e) => {
+    console.log('new filter: ', e.target.value);
+    this.setState({ currentFilter: e.target.value });
+  }
+
+  render() {
     return (
       <FruitBasket
-
-      />
+        fruit = {this.state.fruit}
+        filters = {this.state.filters}
+        currentFilter={this.state.currentFilter}
+        onhandleFilterChange={this.handleFilterChange} />
     )
   }
 }
