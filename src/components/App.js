@@ -31,6 +31,11 @@ export default class App extends Component{
     this.setState({ currentFilter: e.target.value });
   }
 
+  componentWillMount() {
+    this.fetchFilters();
+    this.fetchFruits();
+  }
+
   render() {
     return (
       <FruitBasket
